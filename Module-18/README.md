@@ -110,14 +110,16 @@ Read more [here](Resources/blockchain-install-guide.md) !
         * **NOTE:** Type your password `ZBank` and hit enter - even if you can't see it visually!
         
     Open the second Terminal and navigate into the location of your Blockchain-Tools.
-    *  ./geth --datadir ZBank_node2 --unlock "d32DeEb237768e9d7a8c5bB49104eE564436Fbd1" --mine --port 30304 --bootnodes "enode://16a267f07f3149f2d2de5bffe87a1080156d8c064ddcd4dd05b020c01ca2e977f1f387a0dbd018a5237ff1a9564222ef374ffb1417c88510e1e76c1296ed2b49@127.0.0.1:30303" --ipcdisable --allow-insecure-unlock
+    *  ./geth --datadir ZBank_node2 --unlock "d32DeEb237768e9d7a8c5bB49104eE564436Fbd1" --mine --port 30304 --bootnodes "enode://16a267f07f3149f2d2de5bffe87a1080156d8c064ddcd4dd05b020c01ca2e977f1f387a0dbd018a5237ff1a9564222ef374ffb1417c88510e1e76c1296ed2b49@127.0.0.1:30303"  --allow-insecure-unlock
         * **NOTE:** Type your password `ZBank` and hit enter - even if you can't see it visually!
 
     ```
-    --mine: sets the node to mine new blocks
-    --miner.threads 1: set the number of CPU threads to be used during mining. Lower -> High difficulity
+    --mine: tells the node to mine new blocks
+    --miner.threads 1: tells geth how many CPU threads, or "workers" to use during mining - since our difficulty is low, we can set it to 1
     --unlock: unlocks the node
-    --rpc: allows the node to communciate through the web
+    --port 30304: since the first node's sync port already took up 30303, we need to change this one to 30304
+    --rpc: enables us to talk to our node, which will allow us to use MyCrypto to transact on our chain
+    --bootnodes: allows you to pass the network info needed to find other nodes in the blockchain - this will allow us to connect both of our nodes
     --allow-insecure-unlock: allows to unlock the node in an insecure mananer
     ```
 
